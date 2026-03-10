@@ -1,32 +1,49 @@
-cahier_des_charges.txt
+Cahier des charges
 
-Contexte et objectif 
-- Ma famille demande un moyen de jouer au scrabble quand ils ne sont pas ensemble (en ligne).
+Contexte et objectif :
+Ma famille souhaite pouvoir jouer au Scrabble en ligne même lorsqu'elle ne se trouve pas ensemble. Le produit visé est une application web permettant à 2 à 4 joueurs de participer aux mêmes parties.
 
-Description du produit 
-- Une application en ligne pour jouer au Scrabble de 2 à 4 joueurs
+Description du produit :
+L'application en ligne permettra aux utilisateurs de jouer au Scrabble, de vérifier la validité des mots avec un dictionnaire intégré, et de confirmer si les mots sont valables dans le cadre des règles du Scrabble.
 
-Besoin:
-- jouer au scrabble en ligne
-- pouvoir vérifier ses mots avec un dictionnaire
-- pouvoir confirmer si les mots sont valide au scrabble
-- pouvoir gérer les parties (créer, rejoindre, quitter)
+Besoins :
+- Jouer au Scrabble en ligne
+  - Vérification des mots avec un dictionnaire
+  - Confirmation de la validité des mots selon les règles du Scrabble
 
-Acteurs:
-- joueur (mes parents)
+Acteurs :
+- Joueur (mes parents)
+- Administrateur (moi)
 
-Contraintes:
-- le jeu doit être multi-utilisateur
-- le jeu doit être gratuit
-- le jeu doit être multilingue (français et anglais pour commencer)
-- le jeu doit être accessible
+Contraintes :
+- Multi-utilisateur : Le jeu doit permettre à plusieurs utilisateurs de jouer simultanément.
+- Gratuit : L'application doit être accessible sans frais pour l'utilisateur final.
+- Multilingue : Le jeu doit supporter le français et l'anglais au début, avec une possibilité d'ajouter d'autres langues ultérieurement.
+- Accessibilité : Le jeu doit être facile à utiliser pour tous les utilisateurs.
+- Il doit être possible de mettre à jour le dictionnaire depuis l'application.
 
-demandes:
-- le jeu doit être multiplateforme (web, mobile, desktop)
-- le jeu ne dois pas avoir de publicité
-- le serveur du jeu dois pouvoir tourner sur un PC portable branché à Internet
-- ajouter le mode de Scrabble où tout le monde à les mêmes lettres (le mode de jeu auquel ils jouent au club)
-- le jeu dois avoir un mode clair et sombre
+Demandes :
+- Gestion de parties multiples : Création, participation, et abandon de parties.
+- Sauvegarde des parties : Les joueurs doivent pouvoir sauvegarder les parties pour pouvoir les rejouer plus tard.
+- Multiplateforme : L'application doit être accessible sur web, mobile (iOS, Android), et desktop.
+- Absence de publicité : Le jeu ne doit pas inclure de publicités ni des messages promotionnels.
+- Performance serveur : Le serveur du jeu doit pouvoir tourner sur un PC portable branché à Internet sans problèmes de performance.
+- Mode Scrabble égalitaire : Ajouter le mode de jeu où tous les joueurs ont les mêmes lettres au début, similaire aux parties organisées dans des clubs.
+- Thème clair et sombre : Le jeu doit offrir un choix entre un thème clair et un thème sombre pour l'interface utilisateur.
 
+Partie technique :
+Front end :
+  - Language: JavaScript / HTML5 / CSS3
+  - Framework: jQuery, Bootstrap
+  - UI/UX : Responsive design, animations, transitions
 
-.
+Back end :
+  - Language: PHP
+  - Framework: Laravel / Symfony
+  - ORM: Eloquent / Doctrine ORM
+  - Cache: Redis / Memcached
+  - Queue: Beanstalkd
+  - Database: MySQL / SQLite
+  - Server: Apache
+  - API: RESTful API
+  - Security: HTTPS, JWT for authentication
