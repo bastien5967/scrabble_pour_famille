@@ -1,15 +1,17 @@
 Cahier des charges
 
 Contexte et objectif :
-Ma famille souhaite pouvoir jouer au Scrabble en ligne même lorsqu'elle ne se trouve pas ensemble. Le produit visé est une application web permettant à 2 à 4 joueurs de participer aux mêmes parties.
+Ma famille souhaite pouvoir jouer au Scrabble en ligne même lorsqu'elle ne se trouve pas ensemble.
+Le produit visé est une application web permettant à 2 à 4 joueurs de participer aux mêmes parties.
 
 Description du produit :
-L'application en ligne permettra aux utilisateurs de jouer au Scrabble, de vérifier la validité des mots avec un dictionnaire intégré, et de confirmer si les mots sont valables dans le cadre des règles du Scrabble.
+L'application en ligne permettra aux utilisateurs de jouer au Scrabble, de vérifier la validité des mots avec un dictionnaire intégré,
+ainsi que de confirmer si les mots sont valables dans le cadre des règles du Scrabble.
 
 Besoins :
 - Jouer au Scrabble en ligne
-  - Vérification des mots avec un dictionnaire
-  - Confirmation de la validité des mots selon les règles du Scrabble
+- Vérification des mots avec un dictionnaire
+- Confirmation de la validité des mots selon les règles du Scrabble
 
 Acteurs :
 - Joueur (mes parents)
@@ -19,8 +21,9 @@ Contraintes :
 - Multi-utilisateur : Le jeu doit permettre à plusieurs utilisateurs de jouer simultanément.
 - Gratuit : L'application doit être accessible sans frais pour l'utilisateur final.
 - Multilingue : Le jeu doit supporter le français et l'anglais au début, avec une possibilité d'ajouter d'autres langues ultérieurement.
+- Support pour les mots courants : Le jeu doit être équipé d'un dictionnaire complet.
 - Accessibilité : Le jeu doit être facile à utiliser pour tous les utilisateurs.
-- Il doit être possible de mettre à jour le dictionnaire depuis l'application.
+- Maintenable: Il doit être possible de mettre à jour le dictionnaire depuis l'application.
 
 Demandes :
 - Gestion de parties multiples : Création, participation, et abandon de parties.
@@ -28,22 +31,29 @@ Demandes :
 - Multiplateforme : L'application doit être accessible sur web, mobile (iOS, Android), et desktop.
 - Absence de publicité : Le jeu ne doit pas inclure de publicités ni des messages promotionnels.
 - Performance serveur : Le serveur du jeu doit pouvoir tourner sur un PC portable branché à Internet sans problèmes de performance.
-- Mode Scrabble égalitaire : Ajouter le mode de jeu où tous les joueurs ont les mêmes lettres au début, similaire aux parties organisées dans des clubs.
+- Mode Scrabble Duplicate : Ajouter le mode de jeu Scrabbe Duplicate.
+- Temps de réponse rapide : Le jeu doit avoir une interface utilisateur réactive avec des temps de réponse rapides.
+- Interface utilisateur intuitive : L'interface utilisateur doit être facile à utiliser et intuitive.
 - Thème clair et sombre : Le jeu doit offrir un choix entre un thème clair et un thème sombre pour l'interface utilisateur.
 
 Partie technique :
-Front end :
-  - Language: JavaScript / HTML5 / CSS3
-  - Framework: jQuery, Bootstrap
-  - UI/UX : Responsive design, animations, transitions
+  Front end :
+    - Language: JavaScript / HTML5 / CSS3
+    - Framework: jQuery, Bootstrap
+    - UI/UX : Responsive design, animations, transitions
 
-Back end :
-  - Language: PHP
-  - Framework: Laravel / Symfony
-  - ORM: Eloquent / Doctrine ORM
-  - Cache: Redis / Memcached
-  - Queue: Beanstalkd
-  - Database: MySQL / SQLite
-  - Server: Apache
-  - API: RESTful API
-  - Security: HTTPS, JWT for authentication
+  Back end :
+    - Language: PHP
+    - Framework: Laravel / Symfony
+    - Database: MySQL / SQLite
+    - Server: Apache / Nginx
+    - Hosting: Une machine personnelle branchée à Internet
+    - Version control: Git
+    - API: RESTful API
+
+Partie fonctionnelle :
+- Authentification : Utilisateurs peuvent s'inscrire et se connecter.
+- Partie unique : Un seul joueur peut jouer en même temps.
+- Mode Scrabble Duplicate: Le jeu doit permettre aux joueurs de jouer deux parties en même temps, avec des scores distincts pour chaque partie.
+- Temps de réponse rapide : Les actions du joueur doivent être traitées rapidement par le serveur.
+- Thème clair et sombre : L'utilisateur peut choisir entre un thème clair et un thème sombre pour l'interface utilisateur.
