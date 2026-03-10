@@ -1,6 +1,10 @@
 cahier_des_charges.txt
 
-Ma famille demande un moyen de jouer au scrabble quand ils ne sont pas ensemble (en ligne).
+Contexte et objectif 
+- Ma famille demande un moyen de jouer au scrabble quand ils ne sont pas ensemble (en ligne).
+
+Description du produit 
+- Une application en ligne pour jouer au Scrabble de 2 à 4 joueurs
 
 Besoin:
 - jouer au scrabble en ligne
@@ -22,6 +26,7 @@ demandes:
 - le jeu ne dois pas avoir de publicité
 - le serveur du jeu dois pouvoir tourner sur un PC portable branché à Internet
 - ajouter le mode de Scrabble où tout le monde à les mêmes lettres (le mode de jeu auquel ils jouent au club)
+- le jeu dois avoir un mode clair et sombre
 
 
 .
