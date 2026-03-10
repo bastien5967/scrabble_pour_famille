@@ -1,0 +1,27 @@
+cahier_des_charges.txt
+
+Ma famille demande un moyen de jouer au scrabble quand ils ne sont pas ensemble (en ligne).
+
+Besoin:
+- jouer au scrabble en ligne
+- pouvoir vérifier ses mots avec un dictionnaire
+- pouvoir confirmer si les mots sont valide au scrabble
+- pouvoir gérer les parties (créer, rejoindre, quitter)
+
+Acteurs:
+- joueur (mes parents)
+
+Contraintes:
+- le jeu doit être multi-utilisateur
+- le jeu doit être gratuit
+- le jeu doit être multilingue (français et anglais pour commencer)
+- le jeu doit être accessible
+
+demandes:
+- le jeu doit être multiplateforme (web, mobile, desktop)
+- le jeu ne dois pas avoir de publicité
+- le serveur du jeu dois pouvoir tourner sur un PC portable branché à Internet
+- ajouter le mode de Scrabble où tout le monde à les mêmes lettres (le mode de jeu auquel ils jouent au club)
+
+
+.
