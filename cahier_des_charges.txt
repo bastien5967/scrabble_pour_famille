@@ -20,7 +20,7 @@ Acteurs :
 Contraintes :
 - Multi-utilisateur : Le jeu doit permettre à plusieurs utilisateurs de jouer simultanément.
 - Gratuit : L'application doit être accessible sans frais pour l'utilisateur final.
-- Multilingue : Le jeu doit supporter le français et l'anglais au début, avec une possibilité d'ajouter d'autres langues ultérieurement.
+- Multilingue : Le jeu doit supporter le français au début, avec une possibilité d'ajouter d'autres langues ultérieurement, dont l'anglais.
 - Support pour les mots courants : Le jeu doit être équipé d'un dictionnaire complet.
 - Accessibilité : Le jeu doit être facile à utiliser pour tous les utilisateurs.
 - Maintenable: Il doit être possible de mettre à jour le dictionnaire depuis l'application.
@@ -28,7 +28,7 @@ Contraintes :
 Demandes :
 - Gestion de parties multiples : Création, participation, et abandon de parties.
 - Sauvegarde des parties : Les joueurs doivent pouvoir sauvegarder les parties pour pouvoir les rejouer plus tard.
-- Multiplateforme : L'application doit être accessible sur web, mobile (iOS, Android), et desktop.
+- Multiplateforme : L'application doit être accessible sur un navigateur web et comme application mobile Android.
 - Absence de publicité : Le jeu ne doit pas inclure de publicités ni des messages promotionnels.
 - Performance serveur : Le serveur du jeu doit pouvoir tourner sur un PC portable branché à Internet sans problèmes de performance.
 - Mode Scrabble Duplicate : Ajouter le mode de jeu Scrabbe Duplicate.
@@ -51,9 +51,15 @@ Partie technique :
     - Version control: Git
     - API: RESTful API
 
-Partie fonctionnelle :
-- Authentification : Utilisateurs peuvent s'inscrire et se connecter.
-- Partie unique : Un seul joueur peut jouer en même temps.
-- Mode Scrabble Duplicate: Le jeu doit permettre aux joueurs de jouer deux parties en même temps, avec des scores distincts pour chaque partie.
-- Temps de réponse rapide : Les actions du joueur doivent être traitées rapidement par le serveur.
-- Thème clair et sombre : L'utilisateur peut choisir entre un thème clair et un thème sombre pour l'interface utilisateur.
+Liste des fonctionnalité:
+- jouer au scrabble: les utilisateurs doivent pouvoir jouer au scrabble comme si ils étaient présent dans la même pièce
+- Authentification : Les utilisateurs peuvent s'inscrire et se connecter
+- Partie unique : Un compte ne peut lancer qu'1 seul partie à la fois
+- Plusieur mode de jeu: Scrabble classique et Scrabble Duplicate
+- vérificateur de mot intégré: inclure la possibilité de vérifier la validité de ses mots à tout moment
+
+Déploiment:
+- Déploiement sur une machine personnelle branchée à Internet
+- Utilisation de Git pour le version control
+- Tests unitaires et d'intégration
+- test End To End efféctué par un organisme externe
