@@ -63,3 +63,15 @@ Déploiment:
 - Utilisation de Git pour le version control
 - Tests unitaires et d'intégration
 - test End To End efféctué par un organisme externe
+
+Fonctions:
+  Primaire:
+    - Jouer au Scrabble en ligne
+    - Verifier ses mots
+  Secondaire:
+    - S'inscrire et se connecter
+    - Multilingue
+  Terciaire
+    - Multiplateforme
+    - Thème claire et sombre
+    - Jouer en mode Scrabble Duplicate
