@@ -3,7 +3,7 @@
     if ($debug) {
         echo("hi");
     }
-    
+
     function ExecuteSelectSql($sql, $params)
     { // return what the select return
         global $bdd;
@@ -42,6 +42,8 @@
     try {
         // $bdd = new PDO('mysql:host=localhost;dbname=scrabble', 'bastien5967', 'd975.Y3+tu');
         $bdd = new PDO('mysql:host=localhost;dbname=scrabble', 'scrabble', 'Tv7S3qc3+xvq!');
+	$bdd->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch (Error $e) {
         echo("Error: base de donnée non initialisée: " . $e);
