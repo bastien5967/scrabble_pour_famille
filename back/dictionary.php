@@ -1,13 +1,13 @@
 <?php
 // dictionary.php
 include_once("./config/GestionSQLite.php");
-incluse_once("./user.php");
+include_once("./user.php");
 
 $alphabet = Array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"); // alphabet array
 
 // check if the word is in dictionary
 function check_dictionary($word) {
-    $sql = "SELECT * FROM dictionary WHERE word = :word";
+    $sql = "SELECT * FROM `dictionary` WHERE word = :word";
     $params = Array("word" => $word);
     $result = ExecuteSelectSqlite($sql, $params);
     if (count($result) > 0) {

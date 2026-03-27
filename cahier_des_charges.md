@@ -36,6 +36,11 @@ Demandes :
 - Interface utilisateur intuitive : L'interface utilisateur doit être facile à utiliser et intuitive.
 - Thème clair et sombre : Le jeu doit offrir un choix entre un thème clair et un thème sombre pour l'interface utilisateur.
 
+Suggestion:
+- des hints pour les débutants alimenté par IA (pour faire plaisir aux investisseurs)
+- des adversaires alimentés par IA pour faire des parties contre l'ordinateur
+- challenges : des défis pour les utilisateurs pour améliorer leurs compétences
+
 Partie technique :
   Front end :
     - Language: JavaScript / HTML5 / CSS3
@@ -75,3 +80,4 @@ Fonctions:
     - Multiplateforme
     - Thème claire et sombre
     - Jouer en mode Scrabble Duplicate
+    - Suggestion et indices alimentés par l'IA

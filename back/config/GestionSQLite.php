@@ -20,7 +20,7 @@ function ExecuteUpdateSqlite($sql, $params) {
     return $stmt->rowCount();
 }
 
-$bdd = null;
+$slite_db = null;
 try {
     $dbPath = './config/dictionaire.db';
 
@@ -34,11 +34,12 @@ try {
         throw new Exception("Failed to delete the database file.");
     }
 
+    echo("<br/>\n\n");
     // Connect to the SQLite DB that contains the dictionary
     // $slite_db = new SQLite3($dbPath);
-    $pdo = new PDO("sqlite:$dbPath");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+    $slite_db = new PDO("sqlite:$dbPath");
+    $slite_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo("<br/>\n\n");
 
     if (!$slite_db) {
         throw new Exception("Failed to create new database connection.");
