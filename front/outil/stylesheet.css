@@ -1,0 +1,168 @@
+/* stylesheet.css */
+/* GENERAL UTILITIES */
+.self-center {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.alert {
+    font-size: 1.3em;
+    text-align: center;
+    color: #d31;
+    text-decoration: solid;
+    font-weight: 900;
+}
+
+.red {
+    color: #d31;
+}
+
+.green {
+    color: #3d3;
+}
+
+.yellow {
+    color: #fc7;
+}
+
+body {
+    background-color: #070;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+}
+
+.btn {
+    transition: all 0.3s ease;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 12px 20px;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-primary-custom {
+    background-color: #d31;
+    color: #ddd;
+    border: 1px solid #d31;
+    cursor: pointer;
+    margin: 10px auto;
+    display: block;
+    width: 200px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary-custom:hover {
+    background-color: #c20;
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 0 4px 12px rgba(208, 48, 0, 0.4);
+}
+
+.text-primary-custom {
+    color: #fc7;
+    font-weight: 700;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-menu {
+    color: #fff;
+    text-decoration: none;
+    margin: 1px 15px;
+    font-weight: 500;
+}
+
+.text-menu:hover {
+    color: #d31;
+    text-decoration: none;
+    margin: 1px 15px;
+}
+
+.text-menu:active {
+    color: #c20;
+    font-weight: bold;
+    font-size: 0.95em;
+    text-decoration: none;
+    margin: 1px 15px;
+}
+
+.btn-menu {
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-menu:hover {
+    background-color: rgba(208, 48, 0, 0.3);
+}
+
+/* NEW STYLES */
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.display-4 {
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.lead {
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.7);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .btn-primary-custom {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    .display-4 {
+        font-size: 1.8rem;
+    }
+    
+    .lead {
+        font-size: 1rem;
+    }
+}

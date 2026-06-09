@@ -1,6 +1,5 @@
 <?php
     // GestionSQL.php
-    global $debug;
     if ($debug) {
         echo("hi");
     }

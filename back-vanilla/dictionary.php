@@ -27,7 +27,7 @@ function formate_word($word)
     if (strpos($word, "?") !== false) {
         $count_jocker = count(explode("?", $word)) - 1;
         if ($count_jocker > 1) {
-            // TODO: bash my brain against the fact that a player can have 2 jockers at one...
+            // TODO: crack my brain against the fact that a player can have 2 jockers at one...
             $return = Array("valid" => false);
         } else {
             // check if the word is valid with one jocker
@@ -44,7 +44,7 @@ function formate_word($word)
         }
         echo json_encode($return);
     } else {
-        $result = check_dictionary($word);
+        $result = check_dictionary($word_jocker);
         if ($result['valid'] == true) {
             $return = Array("valid" => true);
         } else {
@@ -52,17 +52,6 @@ function formate_word($word)
         }
         echo json_encode($return);
     }
-}
-
-function isCanBePlaced($words)
-{
-    foreach ($words as $word) {
-        $result = check_dictionary($word);
-        if ($result['valid'] == false) {
-            return json_encode(Array('valid' => false));
-        }
-    }
-    return json_encode(Array('valid' => true));
 }
 
 function add_dictionary($word, $user, $role) {

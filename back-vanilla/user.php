@@ -1,7 +1,6 @@
 <?php
 // user.php
 require_once("./config/GestionSQL.php");
-global $debug;
 
 // all the return will be echoed as json
 function getUserByUsername($username) {
@@ -13,12 +12,11 @@ function getUserByUsername($username) {
 
 function login($username, $password, $quiet = false) {
     $user = getUserByUsername($username);
-    // var_dump($user);//r($user);
     $password = sha256($password); // hash the password
-    if ($user && $password == $user[0]['password']) {
+    if ($user && password_verify($password, $user['password'])) {
         $return = Array("user" => $user, "success" => true, "role" => $user['role']);
     } else {
-        $return = Array("success" => false);
+        $return = Array("success" -> false);
     }
     if ($quiet == false) {
         echo json_encode($return);
@@ -35,7 +33,7 @@ function register($username, $password, $email, $quiet = false) {
         $message = "Username already taken";
         $return = Array('success' => false, 'message' => $message);
         $user_ip = $_SERVER['REMOTE_ADDR'];
-        log_action("A user tried to register with the username $username", "User IP: $user_ip", "register", "info");
+        log_action("A user tried to login with the username $username", "User IP: $user_ip", "register", "info");
         echo json_encode($return);
     } else {
         // actually register the new user
@@ -43,12 +41,12 @@ function register($username, $password, $email, $quiet = false) {
         $params = Array("user" => $username, "pwd" => $password, "email" => $email);
         ExecuteUpdateSql($sql, $params);
         $message = "User registered successfully";
-        $return = Array("success" => true, "message" => $message);
+        $return = Array("success" -> true, "message" -> $message);
         log_action("A new user registered with the username $username", "User: $username; email: $email", "register", "info");
         if ($debug) {
             echo("register sucessfull !");
         }
-    }
+}
     if ($quiet == false) {
         echo json_encode($return);
     } else {

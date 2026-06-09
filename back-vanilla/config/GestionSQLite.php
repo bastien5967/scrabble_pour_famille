@@ -1,6 +1,5 @@
 <?php
 // GestionSQLite.php
-global $debug;
 if ($debug) {
     echo("hi");
 }
@@ -26,9 +25,9 @@ try {
     // $dbPath = 'db/dictionnaire.db';
     // $dbPath_WTF = 'config/db/dictionnaire.db';
     $dbPath = __DIR__ . '/db/dictionnaire.db'; // Use __DIR__ to get the directory of the current script
-    // br();
-    // echo("Database path: ");
-    // var_dump($dbPath);
+    br();
+    echo("Database path: ");
+    var_dump($dbPath);
     if (!file_exists($dbPath)) {
         throw new Exception("Failed to create new database connection.");
     }
@@ -38,14 +37,12 @@ try {
         throw new Exception("Database file is not writable.");
     }
 
+    echo("<br/>\n\n");
     // Connect to the SQLite DB that contains the dictionary
     $slite_db = new PDO("sqlite:$dbPath");
     $slite_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    if ($debug) {
-        br();
-        echo("Connection to the SQLite database initialized. <br/>\n\n");
-    }
-    // Check if the connection was successful
+    echo("Connection to the SQLite database initialized. <br/>\n\n");
+
     if (!$slite_db) {
         throw new Exception("Failed to create new database connection.");
     }

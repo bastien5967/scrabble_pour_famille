@@ -1,8 +1,8 @@
-Cahier des charges
+cahier_des_charges.md
 
 Contexte et objectif :
 Ma famille souhaite pouvoir jouer au Scrabble en ligne même lorsqu'elle ne se trouve pas ensemble.
-Le produit visé est une application web permettant à 2 à 4 joueurs de participer aux mêmes parties.
+Le produit visé est une application web permettant entre 2 et 4 joueurs de participer à la même partie.
 
 Description du produit :
 L'application en ligne permettra aux utilisateurs de jouer au Scrabble, de vérifier la validité des mots avec un dictionnaire intégré,
@@ -29,6 +29,7 @@ Demandes :
 - Gestion de parties multiples : Création, participation, et abandon de parties.
 - Sauvegarde des parties : Les joueurs doivent pouvoir sauvegarder les parties pour pouvoir les rejouer plus tard.
 - Multiplateforme : L'application doit être accessible sur un navigateur web et comme application mobile Android.
+- Donner les définitions des mots placés sur le plateau.
 - Absence de publicité : Le jeu ne doit pas inclure de publicités ni des messages promotionnels.
 - Performance serveur : Le serveur du jeu doit pouvoir tourner sur un PC portable branché à Internet sans problèmes de performance.
 - Mode Scrabble Duplicate : Ajouter le mode de jeu Scrabbe Duplicate.
@@ -43,7 +44,7 @@ Suggestion:
 
 Partie technique :
   Front end :
-    - Language: JavaScript / HTML5 / CSS3
+    - Language: JavaScript / HTML5 / CSS3 / PHP
     - Framework: jQuery, Bootstrap
     - UI/UX : Responsive design, animations, transitions
 
@@ -52,7 +53,7 @@ Partie technique :
     - Framework: Laravel / Symfony
     - Database: MySQL / SQLite
     - Server: Apache / Nginx
-    - Hosting: Une machine personnelle branchée à Internet
+    - Hosting: Une machine personnelle branchée à Internet via Docker
     - Version control: Git
     - API: RESTful API
 
@@ -64,7 +65,7 @@ Liste des fonctionnalité:
 - vérificateur de mot intégré: inclure la possibilité de vérifier la validité de ses mots à tout moment
 
 Déploiment:
-- Déploiement sur une machine personnelle branchée à Internet
+- Déploiement sur une machine personnelle branchée à Internet via Docker
 - Utilisation de Git pour le version control
 - Tests unitaires et d'intégration
 - test End To End efféctué par un organisme externe
@@ -76,6 +77,7 @@ Fonctions:
   Secondaire:
     - S'inscrire et se connecter
     - Multilingue
+    - Donner les définitions des mots
   Terciaire
     - Multiplateforme
     - Thème claire et sombre
