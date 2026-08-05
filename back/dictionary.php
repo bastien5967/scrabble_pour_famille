@@ -53,7 +53,7 @@ function formate_word($word)
         echo json_encode($return);
     }
 }
-
+/*
 function isCanBePlaced($words)
 {
     foreach ($words as $word) {
@@ -64,13 +64,14 @@ function isCanBePlaced($words)
     }
     return json_encode(Array('valid' => true));
 }
-
+*/
 function add_dictionary($word, $user, $role) {
     // check if the role is admin
     $role_checked = check_role($user, $role, true);
     if ($role_checked['success'] == true && $role == 1 || $role == 0) {
         $sql = "INSERT INTO dictionary (word) VALUES (:word)";
         $params = Array("word" => $word);
+        require_once("./config/GestionSQLite_update.php");
         $result = ExecuteUpdateSqlite($sql, $params);
         if ($result > 0) {
             log_action("Added a word: $word", $user);
@@ -91,6 +92,7 @@ function remove_dictionary($word, $user, $role) {
     if ($role_checked['success'] == true && $role == 0) {
         $sql = "UPDATE dictionary SET sys_datesup = CURRENT_TIMESTAMP WHERE word = :word";
         $params = Array("word" => $word);
+        require_once("./config/GestionSQLite_update.php");
         $result = ExecuteUpdateSqlite($sql, $params);
         if ($result > 0) {
             log_action("Removed a word: $word", $user);

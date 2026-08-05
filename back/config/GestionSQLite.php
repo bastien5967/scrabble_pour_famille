@@ -13,14 +13,7 @@ function ExecuteSelectSqlite($sql, $params) {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function ExecuteUpdateSqlite($sql, $params) {
-    // return the number of affected rows
-    global $slite_db;
-    $stmt = $slite_db->prepare($sql);
-    $stmt->execute($params);
-    return $stmt->rowCount();
-}
-
+/*
 $slite_db = null;
 try {
     // $dbPath = 'db/dictionnaire.db';
@@ -56,6 +49,28 @@ catch (Error $e) {
 }
 catch (Exception $e) {
     echo("Error: base de donnée non initialisée: " . $e);
+    exit();
+}
+    */
+$slite_db = null;
+try {
+    $dbPath = __DIR__ . '/db/dictionnaire.db';
+
+    // Check if the file exists
+    if (!file_exists($dbPath)) {
+        throw new Exception("Database file not found.");
+    }
+
+    $dsn = "sqlite:file:$dbPath?mode=ro";
+    $slite_db = new PDO($dsn);
+    $slite_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $slite_db->exec('PRAGMA busy_timeout = 2000;');
+    if (!$slite_db) {
+        throw new Exception("Failed to create new database connection.");
+    }
+}
+catch (Exception $e) {
+    echo("Error: base de donnée non initialisée: " . $e->getMessage());
     exit();
 }
 ?>

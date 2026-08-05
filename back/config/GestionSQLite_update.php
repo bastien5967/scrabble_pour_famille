@@ -1,33 +1,22 @@
 <?php
-// GestionSQLite.php
-if ($debug) {
-    echo("hi");
-}
-
-function ExecuteSelectSqlite($sql, $params) {
-    // return what the select returns
-    global $slite_db;
-    $stmt = $slite_db->prepare($sql);
-    $stmt->execute($params);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+// GestionSQLite_update.php
 
 function ExecuteUpdateSqlite($sql, $params) {
     // return the number of affected rows
-    global $slite_db;
-    $stmt = $slite_db->prepare($sql);
+    global $slite_db_write;
+    $stmt = $slite_db_write->prepare($sql);
     $stmt->execute($params);
     return $stmt->rowCount();
 }
 
-$slite_db = null;
+$slite_db_write = null;
 try {
     // $dbPath = 'db/dictionnaire.db';
     // $dbPath_WTF = 'config/db/dictionnaire.db';
     $dbPath = __DIR__ . '/db/dictionnaire.db'; // Use __DIR__ to get the directory of the current script
-    br();
-    echo("Database path: ");
-    var_dump($dbPath);
+    // br();
+    // echo("Database path: ");
+    // var_dump($dbPath);
     if (!file_exists($dbPath)) {
         throw new Exception("Failed to create new database connection.");
     }
@@ -37,13 +26,16 @@ try {
         throw new Exception("Database file is not writable.");
     }
 
-    echo("<br/>\n\n");
     // Connect to the SQLite DB that contains the dictionary
-    $slite_db = new PDO("sqlite:$dbPath");
-    $slite_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo("Connection to the SQLite database initialized. <br/>\n\n");
-
-    if (!$slite_db) {
+	$writeDb = new PDO("sqlite:$dbPath");
+	$writeDb->exec('PRAGMA journal_mode=WAL;');
+	$slite_db_write->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    if ($debug) {
+        br();
+        echo("Connection to the SQLite database initialized. <br/>\n\n");
+    }
+    // Check if the connection was successful
+    if (!$slite_db_write) {
         throw new Exception("Failed to create new database connection.");
     }
 }
@@ -55,4 +47,3 @@ catch (Exception $e) {
     echo("Error: base de donnée non initialisée: " . $e);
     exit();
 }
-?>

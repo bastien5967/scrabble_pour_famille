@@ -117,6 +117,19 @@ body {
     background-color: rgba(208, 48, 0, 0.3);
 }
 
+.table {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;    
+}
+.tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
 /* NEW STYLES */
 .card {
     border: none;
@@ -147,6 +160,55 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* GAME BOARD */
+.plateau {
+    width: 96%;
+    margin: 0 auto;
+    height: auto; /* to make it responsive */
+    background-color: #03490f; /* dark Scrabble green */
+    /* border: .3vw solid #c20; */
+    padding: 2%;
+}
+.plateau-table {
+    width: min(90vh, 75vw); /* to make it responsive */
+    /* width: 60vw; */
+    margin: 0 auto;
+    background-color: #070;
+    /* border: 1px solid silver; */
+}
+.plateau_cell {
+    background-color: #070;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem; /* to make it responsive */
+    border: 3px solid silver;
+    height: min(6vh, 5vw);
+    width: min(6vh, 5vw);
+    font-weight: bold;
+    font-size: 1.6rem; /* to make it responsive */
+}
+.plateau_cell:hover {
+    border-color: #f00;
+}
+
+.mot_triple {
+    background-color: #c20!important;
+    
+}
+.mot_double {
+    background-color: #fc7!important;
+    
+}
+.lettre_triple {
+    background-color: #20c!important;
+    
+}
+.lettre_douple {
+    background-color: #7cf!important;
+    /* background-color: #99f!important; */
+    
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .btn-primary-custom {
@@ -161,7 +223,12 @@ footer {
     .display-4 {
         font-size: 1.8rem;
     }
-    
+    .plateau_cell {
+        border: 1px solid silver;
+        /* make font size dependant on vw and/or vh */
+        /* font-size: clamp(0.6rem, 0.1vw, 100%); */
+          font-size: clamp(0.0rem, 3.8vw,1.6rem);
+    }
     .lead {
         font-size: 1rem;
     }

@@ -1,5 +1,5 @@
 <!-- head.php -->
-<?php session_start() ?>
+<?php session_start(); //var_dump($_SESSION); ?>
     <head>
         <meta charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

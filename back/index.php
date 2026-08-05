@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 switch ($action) {
+    // USER MANAGMENT
     case 'login':
         $username = $_POST['username'] ?? '';
         $password = $_POST['password'] ?? '';
@@ -27,6 +28,15 @@ switch ($action) {
         echo json_encode($result);
         break;
         
+    case 'register':
+        $username = $_POST['username'] ?? '';
+        $password = $_POST['password'] ?? '';
+        $email = $_POST['email'] ?? '';
+        register($username, $password, $email, false); // Already handles echo
+        break;
+
+    
+    // ADMIN USER MANAGMENT
     case 'check_user':
         $username = $_POST['username'] ?? '';
         $password = $_POST['password'] ?? '';
@@ -45,14 +55,20 @@ switch ($action) {
         $result = check_role($username, $password, true);
         echo json_encode($result);
         break;
-        
-    case 'register':
+    
+    // GAME MANAGMENT
+    case 'initGameState':
+        $return = initGameState($state, $id);
+        echo json_encode(['status' => $return]);
+        break;
+    
+    case 'checkActiveGamesForUser':
         $username = $_POST['username'] ?? '';
-        $password = $_POST['password'] ?? '';
-        $email = $_POST['email'] ?? '';
-        register($username, $password, $email, false); // Already handles echo
+        $result = checkActiveGames($username, true);
+        echo json_encode($result);
         break;
         
+    // DICTIONARY MANAGMENT
     case 'check_dictionary':
         $word = $_POST['word'] ?? '';
         formate_word($word); // Already handles echo
@@ -63,33 +79,6 @@ switch ($action) {
         $result = check_dictionary($word);
         echo json_encode($result);
         break;
-    
-    case 'isCanBePlaced':
-        $words = $_POST['words'] ?? '';
-        $word = explode(',', $words);
-        $result = isCanBePlaced($word);
-        echo json_encode($result);
-        break;
-        
-    case 'setSession':
-        $_SESSION['username'] = $_POST['username'] ?? '';
-        $_SESSION['password'] = $_POST['password'] ?? '';
-        $_SESSION['role'] = $_POST['role'] ?? '';
-        $_SESSION['email'] = $_POST['email'] ?? '';
-        echo json_encode(['status' => 'success']);
-        break;
-        
-    case 'getSession':
-        $retour = [
-            'username' => $_SESSION['username'] ?? '',
-            'password' => $_SESSION['password'] ?? '',
-            'email' => $_SESSION['email'] ?? '',
-            'role' => $_SESSION['role'] ?? ''
-        ];
-        echo json_encode($retour);
-        break;
-    case 'saveGameState':
-        //
     default:
         echo json_encode(['error' => 'Invalid action']);
         break;

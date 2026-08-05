@@ -5,7 +5,7 @@
         echo("hi");
     }
     
-    function ExecuteSelectSql($sql, $params)
+    function ExecuteSelectSql($sql, $params = NULL)
     { // return what the select return
         global $bdd;
         $stmt = $bdd->prepare($sql);
@@ -13,7 +13,7 @@
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function ExecuteUpdateSql($sql, $params)
+    function ExecuteUpdateSql($sql, $params = NULL)
     { // return the number of affected rows
         global $bdd;
         $stmt = $bdd->prepare($sql);
@@ -38,6 +38,12 @@
         $params = ['datas' => $data, 'user' => $user, 'context' => $context, 'log_type' => $type];
         ExecuteUpdateSql($sql, $params);
     }
+    
+    function getLastInsertId()
+    { // return the last inserted id
+       global $bdd;
+       return $bdd->lastInsertId();
+    }  
 
     $bdd = null;
     try {

@@ -19,7 +19,7 @@
                         <div class="card-body text-center p-5">
                             <h2 class="card-title text-primary-custom mb-4" id="play_button_title"></h2>
                             <p class="card-text mb-4" id="play_button_desc"></p>
-                            <button class="btn btn-primary-custom btn-lg w-100" id=start_game></button>
+                            <a class="btn btn-primary-custom btn-lg w-100" id=start_game href="./game_init.php?language=<?= $_SESSION['lang'] ?>">|system_separator_istruction_level|"></a>
                         </div>
                     </div>
                 </div>

@@ -14,17 +14,17 @@
             $message = $_GET['message'];
         }
     ?>
-    <script defer src="./script/login.js"></script>
+    <script src="./script/login.js"></script>
     <body>
         <?php include 'outil/menu.php'; ?>
         <!-- Main content -->
         <div class="d-flex flex-column align-items-center p-5">
-            <h1 class="text-primary-custom text-center">Connexion</h1>
+            <h1 class="text-primary-custom text-center"><?php if ($inscription) { echo("Inscription"); } else { echo("Connexion"); } ?></h1>
             <form class="card" style="width: 37rem;" align=center method="post">
                 <!-- <img src="à_trier/cursed/images_utiles/404.png" class="card-img-top" alt="..."> -->
                  <h3 class="card-img-top alert" id=error_login><?php if (isset($message) && $message == 'true') { echo "Inscription efféctué; vous pouvez ,aintenant vous connecter"; } ?></h3>
                 <div class="card-body">
-                    <h5 class="card-title" align=center>Connexion</h5>
+                    <h5 class="card-title" align=center><?php if ($inscription) { echo("Inscription"); } else { echo("Connexion"); } ?></h5>
                     <p class="card-text" align=center>Nom d'utilisateur: <input type=text name=username id=username placeholder="Nom d'utilisateur"></p>
                     <p class="card-text" align=center>Mot de passe: <input type=text name=password id=password placeholder="Mot de passe"></p>
                     <?php if ($inscription) { ?>
