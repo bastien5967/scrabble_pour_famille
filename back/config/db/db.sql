@@ -25,7 +25,7 @@ CREATE TABLE `partie` (
 CREATE TABLE `partie_player` (
     `partie_id` INT NOT NULL,
     `user_id` INT NOT NULL,
-    `player_order` TINYINT NOT NULL COMMENT '1, 2, 3, or 4',
+    `player_order` TINYINT NULL DEFAULT NULL COMMENT '1, 2, 3, or 4',
     `score` INT DEFAULT 0,
     `chevalet` VARCHAR(7) NULL DEFAULT NULL,
     PRIMARY KEY (`partie_id`, `user_id`),

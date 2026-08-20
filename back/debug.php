@@ -4,7 +4,7 @@
     echo("hi");
     require_once("./config/GestionSQL.php");
     echo "Hello World";
-    //*
+    /*
     try {
         // require_once("./user.php");
         require_once("./dictionary.php");
@@ -71,7 +71,7 @@
     }
 // */
 ?>
-<form method=POST action="index.php?action=login">
+<form method=POST action="index.php?action=checkActiveGamesForUser">
     <input type=text name='username' placeholder='username'>
     <input type=password name='password' placeholder='password'>
     <input type=submit value='Login'>

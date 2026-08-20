@@ -4,53 +4,83 @@ for (var i=1; i<= 15; i++) {
     board[i] = Array(15);
     for (var j=1; j<= 15; j++) { board[i][j] = ""; }
 }
-
-//*
-
-async function initGame() {
-    // Initialize the game board
-    // generate a UUID
-    var uuid = generateUUID();
-    var lesdonnees = { 'uuid': uuid, 'board': board  }; // Modified this line
-    try {
-        var retour = await callAPI(lesdonnees, 'saveGameState', 'json');
-        retour = JSON.parse(retour);
-        // console.log(retour);
-        // Redirect to the home page if the login is successful
-        if (retour['valid'] == true) {
-            $('#result').html(i18next.t('valid_word', {word: word}));
-        } else {
-            $('#result').html(i18next.t('invalid_word', {word: word}));
+var selectedLetter = false; // store the curently selected letter if possible
+var selectedLetterPos = -1;
+var chevalet = Array(8); // store the current cheval
+function count(table){
+    var retour = 0;
+    table.forEach(function(n){
+        if (n != null && n != "") {
+            retour++;
         }
-    } catch (error) {
-        console.error('Error calling API:'+ error);
-        $("#result").html("<span class='red'>" + i18next.t('error_checking') + "</span>");
+    });
+    return retour;
+}
+
+function drawBoard() {
+    for (var i=1; i<= 15; i++) {
+        for (var j=1; j<= 15; j++) {
+            document.getElementById("cell_" + i + "_" + j).innerHTML = board[i][j];
+        }
     }
 }
-// */
 
-async function isCanBePlaced() {
-    
+function drawChevalet() {
+    for (var i=1; i<= 7; i++) {
+        document.getElementById("chevalet_" + i).innerHTML = chevalet[i];
+    }
 }
-async function isWordValid(word) {
-    // verify if a word is valid
-    // remove every space in the word, if any
-    word = word.replace(/\s/g, '');
-    var lesdonnees = { 'word': word }; // Modified this line
 
-    try {
-        var retour = await callAPI(lesdonnees, 'check_dictionary', 'json');
-        retour = JSON.parse(retour);
-        // console.log(retour);
-        // Redirect to the home page if the login is successful
-        if (retour['valid'] == true) {
-            return true;
-        } else {
-            return false;
-        }
-    } catch (error) {
-        console.error('Error calling API:'+ error);
-        $("#error_catch").html("<span class='red'>" + i18next.t('error_checking') + "</span>");
+async function initGame() {
+    var lesdonnees = { 'partie_id': partie_id, 'language': language, 'username': username  };
+    var initGame = await callAPI(lesdonnees, 'initGameState', 'json');
+    retour = JSON.parse(initGame);
+    if (retour == true || retour == "true") {
+        document.getElementById('game_over').style.display = 'none';
+        drawStartingHand();
+        drawBoard();
+        drawChevalet();
+    } else {
+        console.log("nope")
+    }
+}
+
+async function pioche(n) {
+    var hand = count(chevalet);
+    if (hand + n > 7) {
+        console.log("Merci de ne pas jouer avec les commandes");
+    } else {
+        // get n new letter from the server
+        var lesdonnees = { 'partie_id': partie_id, 'username': username , 'n': n };
+        var resultPioche = await callAPI(lesdonnees, 'getNewLetter', 'json');
+       resultPioche = JSON.parse(resultPioche);
+       if (resultPioche['success'] == true && count(resultPioche) == (hand + n) ){
+           // add new letter to chevalet
+           chevalet = resultPioche['letter'];
+       }
+    }
+}
+
+async function drawStartingHand() {
+    var lesdonnees = { 'partie_id': partie_id, 'username': username };
+    var chevalet = await callAPI(lesdonnees, 'getChevalet', 'json');
+    if (count(chevalet) == 0 && count(board[8]) == 0) {
+        pioche(7)
+    }
+}
+
+function clickCell(cell, i, j) {
+    console.log(cell);
+    // check if cell is empty, and if it's not the sta
+}
+
+function clickChevalet(cell, i) {
+    console.log(cell);
+    console.log(chevalet[i]);
+    if (selectedLetterPos == -1 && slectedLetter == false) {
+        // select the letter
+        selectedLetterPos = i;
+        selectedLetter = true;
     }
 }
 

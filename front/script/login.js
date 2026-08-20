@@ -45,15 +45,17 @@ async function inscription() {
         $("#error_login").html("Veuillez remplir tous les champs");
         return ;
     }
-    var lesdonnees = { username: username, password: password, email: email }; // Modified this line
+    var lesdonnees = { username: username.trim(), password: password.trim(), email: email.trim() }; // Modified this line
 
     try {
+        bip();
         var retour = await callAPI(lesdonnees, 'register', 'json');
+        retour = JSON.parse(retour);
         // Redirect to the home page if the login is successful
-        if (retour == "success") {
-            window.location.href = 'login.php?message=success';
+        if (retour["success"] == true) {
+            window.location.href = 'login.php?message=' + retour['message'];
         } else {
-            $("#error_login").html("Error during registration");
+            $("#error_login").html("Error during registration : " + retour['message']);
         }
     } catch (error) {
         console.error('Error calling API:', error);

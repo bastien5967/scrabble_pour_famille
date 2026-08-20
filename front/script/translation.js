@@ -11,6 +11,9 @@ i18next.init({
                 "play_button": "JOUER",
                 "play_button_title": "Jouer maintenant",
                 "play_button_desc": "Rejoignez des parties en direct et défiez vos amis !",
+                "join_button": "Rejoindre vos amis",
+                "join_button_title": "Rejoignez une partie en direct avec vos amis",
+                "join_button_desc": "Entrez le code puis rejoignez vos amis",
                 "check_words": "Vérifier la validité de vos mots",
                 "check_words_title": "Vérifier la validité de vos mots",
                 "check_words_desc": "Utilisez notre dictionnaire pour vérifier si vos mots sont corrects et valides selon les règles françaises.",
@@ -36,6 +39,9 @@ i18next.init({
                 "play_button": "PLAY",
                 "play_button_title": "Play now",
                 "play_button_desc": "Join games, play with friends and have fun !",
+                "join_button": "Join your friends !",
+                "join_button_title": "Join a game wih your friends by entering the code",
+                "join_button_desc": "Enter the code then join your friends !",
                 "check_words_title": "Check word validity",
                 "check_words_desc": "Use our dictionary to verify if your words are correct and valid according to French rules.",
                 "check_button": "CHECK",
@@ -76,6 +82,9 @@ function applyTranslations() {
     if (document.getElementById('check_words_desc')) { document.getElementById('check_words_desc').textContent = i18next.t('check_words_desc'); };
     if (document.getElementById('play_button_desc')) { document.getElementById('play_button_desc').textContent = i18next.t('play_button_desc'); };
     if (document.getElementById('play_button_title')) { document.getElementById('play_button_title').textContent = i18next.t('play_button_title'); };
+    if (document.getElementById('join_button_title')) { document.getElementById('join_button_title').textContent = i18next.t('join_button_title'); };
+    if (document.getElementById('join_button_desc')) { document.getElementById('join_button_desc').textContent = i18next.t('join_button_desc'); };
+    if (document.getElementById('join_button')) { document.getElementById('join_button').value = i18next.t('join_button'); };
     if (document.querySelector('button.btn-primary-custom')) { document.querySelector('button.btn-primary-custom').textContent = i18next.t('check_button'); };
     if (document.querySelector('input#word')) { document.querySelector('input#word').setAttribute('placeholder', i18next.t('enter_word')); };
     if (document.querySelector('button.btn-primary-custom')) { document.querySelector('button.btn-primary-custom').textContent = i18next.t('verify'); };

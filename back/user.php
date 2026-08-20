@@ -20,11 +20,7 @@ function login($username, $password, $quiet = false) {
     } else {
         $return = Array("success" => false);
     }
-    if ($quiet == false) {
-        echo json_encode($return);
-    } else {
-        return $return;
-    }
+    return $return;
 }
 
 function register($username, $password, $email, $quiet = false) {
@@ -36,7 +32,6 @@ function register($username, $password, $email, $quiet = false) {
         $return = Array('success' => false, 'message' => $message);
         $user_ip = $_SERVER['REMOTE_ADDR'];
         log_action("A user tried to register with the username $username", "User IP: $user_ip", "register", "info");
-        echo json_encode($return);
     } else {
         // actually register the new user
         $sql = "INSERT INTO `user` (username, password, email) VALUES (:user, :pwd, :email)";
@@ -45,15 +40,8 @@ function register($username, $password, $email, $quiet = false) {
         $message = "User registered successfully";
         $return = Array("success" => true, "message" => $message);
         log_action("A new user registered with the username $username", "User: $username; email: $email", "register", "info");
-        if ($debug) {
-            echo("register sucessfull !");
-        }
     }
-    if ($quiet == false) {
-        echo json_encode($return);
-    } else {
-        return $return;
-    }
+    return $return;
 }
 
 function check_role($username, $user_role, $quiet = false) {

@@ -169,8 +169,10 @@ footer {
     /* border: .3vw solid #c20; */
     padding: 2%;
 }
-.plateau-table {
+.plateau_table {
     width: min(90vh, 75vw); /* to make it responsive */
+    max-width: 705px;
+    max-height: 705px;
     /* width: 60vw; */
     margin: 0 auto;
     background-color: #070;
@@ -184,10 +186,35 @@ footer {
     border: 3px solid silver;
     height: min(6vh, 5vw);
     width: min(6vh, 5vw);
+    max-width: 47px;
+    max-height: 47px;
     font-weight: bold;
     font-size: 1.6rem; /* to make it responsive */
 }
 .plateau_cell:hover {
+    border-color: #f00;
+}
+
+/* chevalet.js */
+.chevalet_table {
+    /* width: min(80vh, 81vw); to make it responsive */
+    width: 60vw;
+    margin: 30px auto 0 auto;
+    background-color: #070;
+    /* border: 1px solid silver; */
+}
+.chevalet_cell {
+    background-color: #070;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem; /* to make it responsive */
+    border: 3px solid silver;
+    height: min(9vh, 7vw);
+    width: min(9vh, 7vw);
+    font-weight: bold;
+    font-size: 1.6rem; /* to make it responsive */
+}
+.chevalet_cell:hover {
     border-color: #f00;
 }
 

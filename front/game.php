@@ -21,18 +21,19 @@
                 break;
         }
     }
+    var_dump($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
     <?php include 'outil/head.php'; ?>
-    <title>Game</title>
     <script defer src="./script/game.js"></script>
+    <script defer src="./script/game_loop.js"></script>
     <body>
         <?php include 'outil/menu.php'; ?>
         <div id=error_catch></div>
         <!-- Main content -->
         <div class="plateau" id="plateau">
-            <div class="plateau-table table">
+            <div class="plateau_table table">
                 <?php for ($i = 1; $i <= 15; $i++) { ?>
                     <div class="tr">
                         <?php for ($j = 1; $j <= 15; $j++) { ?>
@@ -40,7 +41,7 @@
                             $magicnumber = magic_number($i, $j);
                             if ($magicnumber != "") {
                                 ?><?= $magicnumber ?> <?php
-                            } ?> plateau_cell" onclick="clickCell(this)"<?php if ($magicnumber != "") {
+                            } ?> plateau_cell" onclick="clickCell(this, <?= $i ?>, <?= $j ?>)"<?php if ($magicnumber != "") {
                                 ?> title="<?= $magicnumber ?>" <?php
                             } ?>>
                             <!-- <?php var_dump($magicnumber); ?> -->
@@ -50,4 +51,29 @@
                     </div>
                 <?php } ?>
             </div>
+            <div class="chevalet_table table">
+                <div class="tr">
+                    <?php for ($i = 1; $i <= 7; $i++) { ?>
+                        <div class="td chevalet_cell" onclick="clickChevalet(this, <?= $i ?>)" id="chevalet_<?= $i ?>"></div>
+                    <?php } ?>
+                </div>
+            </div>
         </div>
+        <div class="alert alert-danger" style="display: none; justify-content: space-around; text-align: center;" id="game_over">
+            <div role="alert">Partie en attente</div>
+            <div style="margin: 0 auto;" ><input type="button" value="Commenser" onclick="initGame()" class="btn btn-primary"></div>
+        </div>
+    <script>
+        var partie_id = "<?php if(isset($_GET['game_id'])) { echo $_GET['game_id']; } else if (isset($_POST['game_id'])) { echo $_POST['game_id']; } ?>";
+        // alert(partie_id);
+        if (username == null || username == "") {
+            window.location.href = 'login.php?language=' + language;
+        }
+        // State tracking
+        $(window).ready(async function() {
+            var gameIsReady = await callAPI({ 'partie_id': partie_id, 'username': username }, 'isGameReady', 'json');
+            if (gameIsReady == false || gameIsReady == "false") {
+                document.getElementById('game_over').style.display = 'block';
+            }
+        });
+    </script>

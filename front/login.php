@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <h5 class="card-title" align=center><?php if ($inscription) { echo("Inscription"); } else { echo("Connexion"); } ?></h5>
                     <p class="card-text" align=center>Nom d'utilisateur: <input type=text name=username id=username placeholder="Nom d'utilisateur"></p>
-                    <p class="card-text" align=center>Mot de passe: <input type=text name=password id=password placeholder="Mot de passe"></p>
+                    <p class="card-text" align=center>Mot de passe: <input type=password name=password id=password placeholder="Mot de passe"></p>
                     <?php if ($inscription) { ?>
                         <p class="card-text" align=center>Adresse mail: <input type=text name=email id=email placeholder="Adresse email"></p>
                     <?php } ?>

@@ -1,6 +1,6 @@
 // script.js
 
-function callAPI(lesdonnees, action, retour) {
+async function callAPI(lesdonnees, action, retour) {
     return new Promise((resolve, reject) => {
         // Login example
         $.ajax({

@@ -5,6 +5,7 @@ session_start(); // Start session at the beginning
 require_once "./config/util.php";
 require_once("./dictionary.php");
 require_once("./user.php");
+require_once("./partie.php");
 
 // Set content type to JSON
 header('Content-Type: application/json');
@@ -32,7 +33,8 @@ switch ($action) {
         $username = $_POST['username'] ?? '';
         $password = $_POST['password'] ?? '';
         $email = $_POST['email'] ?? '';
-        register($username, $password, $email, false); // Already handles echo
+        $result = register($username, $password, $email, false); // Already handles echo
+        echo json_encode($result);
         break;
 
     
@@ -56,16 +58,56 @@ switch ($action) {
         echo json_encode($result);
         break;
     
-    // GAME MANAGMENT
+    // INIT GAME MANAGMENT
     case 'initGameState':
-        $return = initGameState($state, $id);
+        $id = $_POST['id'] ?? '';
+        $language = $_POST['language'] ?? '';
+        $return = initGameState($id, $language);
         echo json_encode(['status' => $return]);
         break;
     
     case 'checkActiveGamesForUser':
+        // var_dump("hi");
         $username = $_POST['username'] ?? '';
         $result = checkActiveGames($username, true);
         echo json_encode($result);
+        break;
+    
+    case 'createNewGame':
+        $username = $_POST['username'] ?? '';
+        $language = $_POST['language'] ?? '';
+        $result = createNewGame($username, true);
+        echo json_encode($result);
+        break;
+    
+    case "isGameReady":
+        $partie_id = $_POST['partie_id'];
+        $username = $_POST['username'] ?? '';
+        $result = isGameReady($partie_id, true);
+        echo json_encode($result);
+        break;
+    
+    // ACTIVE GAME MANAGMENT
+    case 'getCurentGameState':
+        $partie_id = $_POST['partie_id'];
+        // $username = $_POST['username'];
+        $retour = getCurentGameState($partie_id, $username);
+        echo json_encode($result);
+        break;
+    
+    case 'getChevalet':
+        $partie_id = $_POST['partie_id'];
+        $username = $_POST['username'];
+        $retour = getChevalet($partie_id, $username);
+        echo json_encode($result);
+        break;
+    
+    case 'getNewLetter':
+        $partie_id = $_POST['partie_id'];
+        $username = $_POST['username'];
+        $n = $_POST['n'];
+        $retour = getNewLetter($partie_id, $username, $n);
+        echo json_encode($retour);
         break;
         
     // DICTIONARY MANAGMENT

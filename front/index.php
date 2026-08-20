@@ -25,6 +25,25 @@
                 </div>
             </div>
             
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card bg-dark text-white shadow-lg">
+                        <div class="card-body text-center p-5">
+                            <h2 class="card-title text-primary-custom mb-4" id="join_button_title"></h2>
+                            <p class="card-text mb-4" id="join_button_desc"></p>
+                            <form method=POST action="./game.php?language=<?= $_SESSION['lang'] ?>">
+                                <input type=hidden name=username value="<?= $_SESSION['username'] ?>"/>
+                                <input type=hidden name=action value="join"/>
+                                <div class="mb-3">
+                                    <input type="text" name="game_id" id="code_partie" placeholder="Code de la salle" style="text-align: center;" class="form-control">
+                                </div>
+                                <input type=submit class="btn btn-primary-custom btn-lg w-100" id=join_button value="|system_separator_istruction_level|">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6">
                     <div class="card bg-dark text-white shadow-lg">
